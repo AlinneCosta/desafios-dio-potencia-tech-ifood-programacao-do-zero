@@ -1,54 +1,30 @@
 //Desafio DIO Potência Tech iFood - Programação do Zero: Calculadora de Partidas Rankeadas
 
-let vitoria = 0;  //Inicia a variável vitória.
-let derrota = 0;  //Inicia a variável derroata.
+function calcularNivel(vitorias, derrotas) {
+    const saldoVitorias = vitorias - derrotas;
+    let nivel;
 
-function saldoVitorias(vitoria, derrota) {
-  let saldo = vitoria - derrota;
-  return saldo;
+    if (vitorias < 10) {
+        nivel = "Ferro";
+    } else if (vitorias >= 11 && vitorias <= 20) {
+        nivel = "Bronze";
+    } else if (vitorias >= 21 && vitorias <= 50) {
+        nivel = "Prata";
+    } else if (vitorias >= 51 && vitorias <= 80) {
+        nivel = "Ouro";
+    } else if (vitorias >= 81 && vitorias <= 90) {
+        nivel = "Diamante";
+    } else if (vitorias >= 91 && vitorias <= 100) {
+        nivel = "Lendário";
+    } else {
+        nivel = "Imortal";
+    }
+
+    return { saldoVitorias, nivel };
 }
 
-let saldo = saldoVitorias(321, 52); //Escreva aqui as quantidades de vitórias e derrotas.
-
-switch (true) {
-  case saldo <= 10:
-    console.log(
-      "O Herói tem o saldo de " + saldo + " e está no nível de Ferro."
-    );
-    break;
-
-  case saldo >= 11 && saldo <= 20:
-    console.log(
-      "O Herói tem o saldo de " + saldo + " e está no nível de Bronze."
-    );
-    break;
-
-  case saldo >= 21 && saldo <= 50:
-    console.log(
-      "O Herói tem o saldo de " + saldo + " e está no nível de Prata."
-    );
-    break;
-
-  case saldo >= 51 && saldo <= 80:
-    console.log(
-      "O Herói tem o saldo de " + saldo + " e está no nível de Ouro."
-    );
-    break;
-
-  case saldo >= 81 && saldo <= 90:
-    console.log(
-      "O Herói tem o saldo de " + saldo + " e está no nível de Diamante."
-    );
-    break;
-
-  case saldo >= 91 && saldo <= 100:
-    console.log(
-      "O Herói tem o saldo de " + saldo + " e está no nível de Lendário."
-    );
-    break;
-
-  default:
-    console.log(
-      "O Herói tem o saldo de " + saldo + " e está no nível de Imortal."
-    );
-}
+// Exemplo:
+const vitorias = 20;
+const derrotas = 5;
+const { saldoVitorias, nivel } = calcularNivel(vitorias, derrotas);
+console.log(`O Herói tem um saldo de ${saldoVitorias} está no nível de ${nivel}`);
